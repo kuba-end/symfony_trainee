@@ -30,7 +30,7 @@ class UploadPhotoType extends AbstractType
 
             )
             ->add('is_public', CheckboxType::class, [
-                'label' => 'Publicznej',
+                'label' => 'Publiczne',
                 'required' => false
 
             ])

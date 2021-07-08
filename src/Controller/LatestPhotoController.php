@@ -13,7 +13,7 @@ class LatestPhotoController extends AbstractController{
     {
         $em = $this->getDoctrine()->getManager();
         $latestPhotos = $em->getRepository(Photo::class)->findBy(['is_public'=>true]);
-         return $this->render('latestPhotos/index.html.twig',[
-             'latestPhotoPublic' => $latestPhotos]);
+         return $this->render('latest_photos/index.html.twig',[
+             'latestPhotosPublic' => $latestPhotos]);
     }
 }

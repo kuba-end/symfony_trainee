@@ -25,25 +25,27 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {%if app.request.get('_route') == 'index' %}active{% endif %}">
-                            <a class="nav-link" href="{{ path('index') }}">Strona główna</a>
+                        <li class="nav-item">
+                            <a class="nav-link {%if app.request.get('_route') == 'index' %}active{% endif %}"
+                               href="{{ path('index') }}">Strona główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Najnowsze</a>
+                            <a class="nav-link {%if app.request.get('_route') == 'latest_photos' %}active{% endif %}"
+                               href="{{ path('latest_photos') }}">Najnowsze</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Moje zdjęcia</a>
                         </li>
                         {% if app.user %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj się</a>
+                                    <a class="nav-link {%if app.request.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Wyloguj się</a>
                                 </li>
                         {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_login') }}">Zaloguj się</a>
+                                    <a class="nav-link {%if app.request.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Zaloguj się</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_register') }}">Zarejestruj się</a>
+                                    <a class="nav-link {%if app.request.get('_route') == 'app_register' %}active{% endif %}" href="{{ path('app_register') }}">Zarejestruj się</a>
                                 </li>
                         {% endif %}
 

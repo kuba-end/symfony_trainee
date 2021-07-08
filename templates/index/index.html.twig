@@ -30,11 +30,11 @@
                                 {{ message }}
                             </div>
                         {% endfor %}
-                        {% for message in app.flashes('error') %}
-                            <div class="alert alert-danger">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
+                         {% for message in app.flashes('error') %}
+                             <div class="alert alert-success">
+                                 {{ message }}
+                             </div>
+                         {% endfor %}
                     </div>
                 </div>
             </div>
