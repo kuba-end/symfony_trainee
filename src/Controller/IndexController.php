@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     /**
+     * @Route ("/", name ="index")
      * @param Request $request
      * @return Response
      */
-    #[Route('/', name: 'index')]
     public function index(Request $request): Response
     {
         $form = $this->createForm(UploadPhotoType::class);
@@ -48,7 +48,6 @@ class IndexController extends AbstractController
                         $this->addFlash('error','Coś poszło nie tak');
                     }
                 }
-                $this->addFlash('error','Coś poszło nie tak');
             }
         }
 

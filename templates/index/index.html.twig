@@ -7,7 +7,7 @@
     <div class="container">
         <div class="card mt-5">
             <div class="card-body">
-                Dziel się z innymi zdjęciami przygotwanych przez siebie potraw.
+                Share your dishes with other users!
             </div>
         </div>
 
@@ -15,13 +15,13 @@
             <div class="col-sm-6 col-md-6 d-flex align-items-center justify-content-center">
                 <div class="d-flex mt-5">
                     <div class="d-flex flex-column mb-4">
-                        <h1 class="text-center mb-4 h4">Wgrywaj dowolne zdjęcia!</h1>
+                        <h1 class="text-center mb-4 h4">Upload food photos!</h1>
                         {{ form_start(form, {'attr': {'class' : 'd-flex flex-column mb-4' }}) }}
                         {{ form_row(form.filename) }}
                         <div class="align-self-center">
                         {{ form_row(form.is_public, {'label-attr': {'class' : 'font-weight-bold mt-4 mb-5 ml-2 mr-2'}}) }}
                         </div>
-                        <input type="submit" value="Wyślij" class="form-control btn btn-success w-50 align-self-center" />
+                        <input type="submit" value="Upload" class="form-control btn btn-success w-50 align-self-center" />
 
                         {{ form_end(form) }}
 
@@ -31,7 +31,7 @@
                             </div>
                         {% endfor %}
                          {% for message in app.flashes('error') %}
-                             <div class="alert alert-success">
+                             <div class="alert alert-danger">
                                  {{ message }}
                              </div>
                          {% endfor %}
@@ -47,12 +47,12 @@
 
         <div class="card mt-5">
             <div class="card-header">
-                Panel użytkownika
+                User panel
             </div>
             <div class="card-body">
-                <h5 class="card-title">Załóż darmowe konto już teraz</h5>
-                <p class="card-text">Wgrywaj setki zdjęć za darmo i miej je zachowane na zawsze</p>
-                <a href="#" class="btn btn-primary">Załóż konto</a>
+                <h5 class="card-title">Register now</h5>
+                <p class="card-text">Share and rate, learn new recipes</p>
+                <a href="{{ path('app_register') }}" class="btn btn-primary">Create account</a>
             </div>
         </div>
 
@@ -61,21 +61,21 @@
             <div class="col-sm-4">
                 <div class="d-flex flex-column align-items-center">
                     <div><img src="{{ asset('assets/images/1.png') }}" class="img-fluid"/> </div>
-                    <div style="font-size: 24px;">Wgrywaj swoje zdjęcia</div>
-                    <p class="mt-3 text-center">Wgrywaj swoje zdjęcia bez limitu. Używaj zgodnych formatów plików zdjęciowych</p>
+                    <div style="font-size: 24px;">Upload your photos</div>
+                    <p class="mt-3 text-center">Upload your photos with no limit. Remember to upload only image files</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="d-flex flex-column align-items-center">
                     <div><img src="{{ asset('assets/images/2.png') }}" class="img-fluid"/> </div>
-                    <div style="font-size: 24px;">Darmowe konto użytkownika</div>
-                    <p class="mt-3 text-center">Załóż darmowe konto i korzystaj z niego bez limitu. Twoje zdjęcia, twoje dane.</p>
+                    <div style="font-size: 24px;">Free user acoount</div>
+                    <p class="mt-3 text-center">Create free account and use it with no limits.</p>
                 </div></div>
             <div class="col-sm-4">
                 <div class="d-flex flex-column align-items-center">
                     <div><img src="{{ asset('assets/images/3.png') }}" class="img-fluid"/> </div>
-                    <div style="font-size: 24px;">Wpływ na rozwój serwisu</div>
-                    <p class="mt-3 text-center">Miej duży wpływ na rozwój serwisu przy wgrywaniu zdjęć. Wszystko co wgrywasz publicznie ma znaczenie.</p>
+                    <div style="font-size: 24px;">Be a creator of this site</div>
+                    <p class="mt-3 text-center">Every photo you upload creating this site. Every public photo make difference</p>
                 </div>
             </div>
 
@@ -84,16 +84,16 @@
 
     <section class="bg-dark" style="height: 100%">
         <div class="container text-white">
-            <h3 class="text-center text-white h1 font-weight-lighter" style="padding-top: 120px;">Dane w chmurze</h3>
-            <p class="pt-5 pb-5 font-weight-lighter text-center">Twoje zdjęcia będą dostępne w chmurze dopóki ich nie usuniesz. Pamiętaj, że masz do nich dostęp z każdego miejsca na ziemi. Po zalogowaniu się masz pełny dostęp do swoich danych oraz zdjęć.</p>
+            <h3 class="text-center text-white h1 font-weight-lighter" style="padding-top: 120px;">Data in cloud</h3>
+            <p class="pt-5 pb-5 font-weight-lighter text-center">Your photos will be stored in cloud. You can access them from around the world.</p>
             <div class="row pt-5" style="padding-bottom: 120px;">
 
                 <div class="col-lg-3 col-md-6">
                     <div class="member">
                         <div class="member-info">
                             <div class="member-info-content">
-                                <h4>1. Zarejestruj się</h4>
-                                <span>Najpierw załóż konto w serwisie</span>
+                                <h4>1. Register</h4>
+                                <span>Firtst things first. Create an account.</span>
                             </div>
                         </div>
                     </div>
@@ -103,8 +103,8 @@
                     <div class="member">
                         <div class="member-info">
                             <div class="member-info-content">
-                                <h4>2. Zaloguj się</h4>
-                                <span>Nastepnie zaloguj się podanymi danymi podczas rejestracji</span>
+                                <h4>2. Log in</h4>
+                                <span>Next login with your credentials</span>
                             </div>
                         </div>
                     </div>
@@ -114,8 +114,8 @@
                     <div class="member">
                         <div class="member-info">
                             <div class="member-info-content">
-                                <h4>3. Dodaj zdjęcie</h4>
-                                <span>Dodaj prywatne lub publiczne</span>
+                                <h4>3. Upload photo</h4>
+                                <span>Add photos as private or public</span>
                             </div>
                         </div>
                     </div>
@@ -125,8 +125,8 @@
                     <div class="member">
                         <div class="member-info">
                             <div class="member-info-content">
-                                <h4>4. Oglądaj zdjęcia</h4>
-                                <span>Oglądaj wszystkie publiczne zdjęcia lub swoje prywatne</span>
+                                <h4>4. Watch photos</h4>
+                                <span>Watch all public photos of all users</span>
                             </div>
                         </div>
                     </div>

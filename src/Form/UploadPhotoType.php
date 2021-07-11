@@ -23,14 +23,14 @@ class UploadPhotoType extends AbstractType
                         'mimeTypes' => [
                             'image/*'
                         ],
-                        'mimeTypesMessage' => 'Obsługiwany format pliku musi być obrazem',
+                        'mimeTypesMessage' => 'File must be an image',
                     ])
                 ]
                 ]
 
             )
             ->add('is_public', CheckboxType::class, [
-                'label' => 'Publiczne',
+                'label' => 'Public',
                 'required' => false
 
             ])

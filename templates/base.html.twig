@@ -2,24 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Rate mate - {% endblock %}</title>
+        <title>{% block title %}FoodPorn - {% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/simpleLightbox.min.css') }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-            <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-        {% endblock %}
+
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <div class="container">
-                <a class="navbar-brand" href="{{ path('index') }}">Rate Mate</a>
+                <a class="navbar-brand" href="{{ path('index') }}">FoodPorn</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -27,25 +24,26 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link {%if app.request.get('_route') == 'index' %}active{% endif %}"
-                               href="{{ path('index') }}">Strona główna</a>
+                               href="{{ path('index') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {%if app.request.get('_route') == 'latest_photos' %}active{% endif %}"
-                               href="{{ path('latest_photos') }}">Najnowsze</a>
+                               href="{{ path('latest_photos') }}">Latest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Moje zdjęcia</a>
+                            <a class="nav-link {%if app.request.get('_route') == 'my_photos' %}active{% endif %}"
+                               href="{{ path('my_photos') }}">My photo</a>
                         </li>
                         {% if app.user %}
                                 <li class="nav-item">
-                                    <a class="nav-link {%if app.request.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Wyloguj się</a>
+                                    <a class="nav-link {%if app.request.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Logout</a>
                                 </li>
                         {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link {%if app.request.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Zaloguj się</a>
+                                    <a class="nav-link {%if app.request.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {%if app.request.get('_route') == 'app_register' %}active{% endif %}" href="{{ path('app_register') }}">Zarejestruj się</a>
+                                    <a class="nav-link {%if app.request.get('_route') == 'app_register' %}active{% endif %}" href="{{ path('app_register') }}">Register</a>
                                 </li>
                         {% endif %}
 
@@ -61,9 +59,17 @@
     <!--footer-->
     <footer>
         <div class="pt-3 pb-3 bg-secondary">
-            <span class="d-block text-center text-white">Kuba Rudziński - 2021</span>
+            <span class="d-block text-center text-white">Kuba Rudziński - junior PHP dev</span>
         </div>
 
     </footer>
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/jquery-3.4.1.slim.min.js') }}"></script>
+            <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/simpleLightbox.min.js') }}"></script>
+            <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        {% endblock %}
+
     </body>
 </html>
