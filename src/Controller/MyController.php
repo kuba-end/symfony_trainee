@@ -25,7 +25,7 @@ class MyController extends AbstractController{
         $myPhotos = $em->getRepository(Photo::class)->findBy([
             'user' => $this->getUser()
         ]);
-        return $this->render('my/index.html.twig',[
+        return $this->render('my/photos.html.twig',[
             'myPhotos' => $myPhotos
         ]);
     }

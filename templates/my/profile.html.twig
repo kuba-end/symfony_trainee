@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ parent() }} My profile{% endblock %}
+
+{% block content %}
+    <div class="container h2">
+        Profile settings
+    </div>
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">Change password</h5>
+                <p class="card-text">You can easily change your password here.</p>
+                <a href="{{ path("my_profile_password_change")}}" class="card-link">Change password</a>
+            </div>
+        </div>
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">Reset password</h5>
+                <p class="card-text">If you forgot password you can reset it here.</p>
+                <a href="{{ path('app_forgot_password_request') }}" class="card-link">Reset password</a>
+            </div>
+        </div>
+        <div class="card mt-5 mb-5">
+            <div class="card-body">
+                <h5 class="card-title">Delete account</h5>
+                <p class="card-text">This operation cannot be reverted</p>
+                <a href="#" class="card-link">Delete account</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

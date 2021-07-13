@@ -49,11 +49,32 @@
             <div class="card-header">
                 User panel
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Register now</h5>
-                <p class="card-text">Share and rate, learn new recipes</p>
-                <a href="{{ path('app_register') }}" class="btn btn-primary">Create account</a>
-            </div>
+            {% if app.user %}
+
+            {% else %}
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Register now</h5>
+                            <p class="card-text">Share and rate, learn new recipes</p>
+                            <a href="{{ path('app_register') }}" class="btn btn-primary">Create account</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mt-5">or</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-body">
+                        <h5 class="card-title">Log in</h5>
+                        <p class="card-text">Login to your account and menage your photos</p>
+                        <a href="{{ path('app_login') }}" class="btn btn-primary">Log in!</a>
+                        </div>
+                     </div>
+                </div>
+            {% endif %}
+
         </div>
 
 

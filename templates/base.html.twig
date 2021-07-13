@@ -35,6 +35,11 @@
                                href="{{ path('my_photos') }}">My photo</a>
                         </li>
                         {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link {%if app.request.get('_route') == 'my_profile' %}active{% endif %}" href="{{ path('my_profile') }}">My profile</a>
+                            </li>
+                        {% endif %}
+                        {% if app.user %}
                                 <li class="nav-item">
                                     <a class="nav-link {%if app.request.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Logout</a>
                                 </li>
