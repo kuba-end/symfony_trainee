@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Delete account{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    {% for flashError in app.flashes("accountDeleteError") %}
+    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+
+    <h1 class="h3 mb-3 mt-5 font-weight-normal text-center ">Delete account</h1>
+    {% form_theme deleteAccountForm 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(deleteAccountForm) }}
+    {{ form_row(deleteAccountForm.Password) }}
+    {{ form_row(deleteAccountForm.Confirm) }}
+        <button class="btn btn-primary mt-3 mb-3">Reset</button>
+    {{ form_end(deleteAccountForm) }}
+
+</div>
+{% endblock %}

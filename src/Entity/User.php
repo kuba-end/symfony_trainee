@@ -58,9 +58,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->photos = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
-        return $this->id;
+        return (int) $this->id;
     }
 
     public function getUsername(): ?string
@@ -103,6 +103,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @param mixed $id
+     */
 
     /**
      * @see PasswordAuthenticatedUserInterface

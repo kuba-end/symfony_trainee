@@ -42,12 +42,15 @@ class IndexController extends AbstractController
                         $entityPhotos->setUser($this->getUser());
                         $em->persist($entityPhotos);
                         $em->flush();
-                        $this->addFlash('success','Dodano zdjęcie!');
+                        $this->addFlash('success','Photo uploaded!');
                     }
                     catch(\Exception $e){
-                        $this->addFlash('error','Coś poszło nie tak');
+                        $this->addFlash('error','Something went wrong');
                     }
                 }
+            }
+            else{
+                $this->addFlash('error', 'You need to log in to add photo');
             }
         }
 
