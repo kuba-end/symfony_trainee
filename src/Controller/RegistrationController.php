@@ -44,9 +44,15 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             if ( ! $entityManager->getRepository(User::class)->findBy(
                 [
-                    'username' => $form->get('username')->getData()
-                ]
-            ))
+                    'username' => $form->get('username')->getData(),
+                ]))
+                {
+            if (! $entityManager->getRepository(User::class)->findBy(
+                    [
+                        'email' => $form->get('email')->getData(),
+                    ]
+                )
+            )
             {
                 $user
                     ->setPassword(
@@ -72,7 +78,7 @@ class RegistrationController extends AbstractController
 
 
             }else{
-                $this->addFlash('login_taken_error', 'This username is already taken');
+                $this->addFlash('email_taken_error', 'This email is already taken');
 
             }
 
@@ -81,6 +87,10 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
+        }else{
+                $this->addFlash('login_taken_error', 'This login is already taken');
+
+            }
         }
 
         return $this->render('registration/register.html.twig', [
