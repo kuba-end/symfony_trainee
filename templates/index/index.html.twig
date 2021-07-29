@@ -40,7 +40,7 @@
             </div>
 
             <div class="col-sm-6 col-md-6 mt-4">
-                <img src="{{ asset('assets/images/demo.jpg') }}" class="img-fluid" />
+                <img src="{{ asset('assets/images/demo1.jpg') }}" class="img-fluid" />
             </div>
         </div>
 
@@ -50,6 +50,35 @@
                 User panel
             </div>
             {% if app.user %}
+                <div class="row mt-5 mb-5" style="padding-top: 80px; padding-bottom: 80px;">
+                    <div class="col-sm-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <div>
+                                <a href="{{ path('my_profile') }}"><img src="{{ asset('assets/images/6.png') }}" class="img-fluid"/></a>
+                            </div>
+                            <div style="font-size: 24px;">Settings</div>
+                            <p class="mt-3 text-center"><a href="{{ path('my_profile') }}">Manage</a> your profile</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <div>
+                                <a href="{{ path('my_photos') }}"><img src="{{ asset('assets/images/5.png') }}" class="img-fluid"/></a>
+                            </div>
+                            <div style="font-size: 24px;">Your content</div>
+                            <p class="mt-3 text-center"><a href="{{ path('my_photos') }}">Check</a> your photos</p>
+                        </div></div>
+                    <div class="col-sm-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <div>
+                                <a href="{{ path('latest_photos') }}"><img src="{{ asset('assets/images/4.png') }}" class="img-fluid"/></a>
+                            </div>
+                            <div style="font-size: 24px;">Discover!</div>
+                            <p class="mt-3 text-center"><a href="{{ path('latest_photos') }}">Browse</a> content</p>
+                        </div>
+                    </div>
+
+                </div>
 
             {% else %}
                 <div class="row">
@@ -89,7 +118,7 @@
             <div class="col-sm-4">
                 <div class="d-flex flex-column align-items-center">
                     <div><img src="{{ asset('assets/images/2.png') }}" class="img-fluid"/> </div>
-                    <div style="font-size: 24px;">Free user acoount</div>
+                    <div style="font-size: 24px;">Free user account</div>
                     <p class="mt-3 text-center">Create free account and use it with no limits.</p>
                 </div></div>
             <div class="col-sm-4">
