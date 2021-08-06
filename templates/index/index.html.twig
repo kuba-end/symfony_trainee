@@ -15,11 +15,14 @@
             <div class="col-sm-6 col-md-6 d-flex align-items-center justify-content-center">
                 <div class="d-flex mt-5">
                     <div class="d-flex flex-column mb-4">
-                        <h1 class="text-center mb-4 h4">Upload food photos!</h1>
+                        <h1 class="text-center mb-4 h4">Add your recipe!</h1>
                         {{ form_start(form, {'attr': {'class' : 'd-flex flex-column mb-4' }}) }}
                         {{ form_row(form.filename) }}
                         <div class="align-self-center">
-                        {{ form_row(form.is_public, {'label-attr': {'class' : 'font-weight-bold mt-4 mb-5 ml-2 mr-2'}}) }}
+                            {{ form_row(form.recipe) }}
+                        </div>
+                        <div class="align-self-center">
+                            {{ form_row(form.is_public, {'label-attr': {'class' : 'font-weight-bold mt-4 mb-5 ml-2 mr-2'}}) }}
                         </div>
                         <input type="submit" value="Upload" class="form-control btn btn-success w-50 align-self-center" />
 

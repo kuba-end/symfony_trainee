@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Photo;
+use App\Entity\Recipe;
 use App\Form\UploadPhotoType;
+use App\Form\UploadRecipeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -29,22 +31,36 @@ class IndexController extends AbstractController
                  * @var UploadedFile $pictureFileName
                  */
                 $pictureFileName = $form->get('filename')->getData();
-                if ($pictureFileName){
+                $recipe = $form->get('recipe')->getData();
+                if ($pictureFileName && $recipe){
                     try {
+                        $entityRecipe = new Recipe();
+                        $entityRecipe->setDescription($recipe);
+                        $entityRecipe->setUploadedAt(new \DateTime());
+                        $em->persist($entityRecipe);
+                        $em->flush();
+                        // Double flush isn't a good practice
+                        $recipeId = $entityRecipe->getId();
+
+
                         $orginalFileName = pathinfo($pictureFileName->getClientOriginalName(), PATHINFO_FILENAME );
                         $safeFileName = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()',$orginalFileName);
                         $newFileName = $safeFileName.'-'.uniqid().'.'.$pictureFileName->guessExtension();
                         $pictureFileName->move('images/hosting', $newFileName);
                         $entityPhotos = new Photo();
                         $entityPhotos->setFilename($newFileName);
+                        $entityPhotos->setRecipeId($recipeId);
                         $entityPhotos->setIsPublic($form->get('is_public')->getData());
                         $entityPhotos->setUploadedAt(new \DateTime());
                         $entityPhotos->setUser($this->getUser());
                         $em->persist($entityPhotos);
+
                         $em->flush();
-                        $this->addFlash('success','Photo uploaded!');
+                        $this->addFlash('success','Recipe uploaded!');
                     }
                     catch(\Exception $e){
+                        echo $e->getMessage();
+                        echo '<br>'.$recipeId;
                         $this->addFlash('error','Something went wrong');
                     }
                 }

@@ -28,6 +28,7 @@ class Photo
      */
     private $user;
 
+
     /**
      * @ORM\Column(type="datetime")
      */
@@ -37,6 +38,7 @@ class Photo
      * @ORM\Column(type="boolean")
      */
     private $is_public;
+
 
     public function getId(): ?int
     {
@@ -72,12 +74,7 @@ class Photo
         return $this->uploaded_at;
     }
 
-    public function setUploadedAt(\DateTimeInterface $uploaded_at): self
-    {
-        $this->uploaded_at = $uploaded_at;
 
-        return $this;
-    }
 
     public function getIsPublic(): ?bool
     {
@@ -90,4 +87,14 @@ class Photo
 
         return $this;
     }
+
+    public function setUploadedAt(\DateTimeInterface $uploaded_at): self
+    {
+        $this->uploaded_at = $uploaded_at;
+
+        return $this;
+    }
+
+
+
 }
