@@ -34,28 +34,26 @@ class IndexController extends AbstractController
                 $recipe = $form->get('recipe')->getData();
                 if ($pictureFileName && $recipe){
                     try {
-                        $entityRecipe = new Recipe();
-                        $entityRecipe->setDescription($recipe);
-                        $entityRecipe->setUploadedAt(new \DateTime());
-                        $em->persist($entityRecipe);
-                        $em->flush();
-                        // Double flush isn't a good practice
-                        $recipeId = $entityRecipe->getId();
-
-
                         $orginalFileName = pathinfo($pictureFileName->getClientOriginalName(), PATHINFO_FILENAME );
                         $safeFileName = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()',$orginalFileName);
                         $newFileName = $safeFileName.'-'.uniqid().'.'.$pictureFileName->guessExtension();
                         $pictureFileName->move('images/hosting', $newFileName);
                         $entityPhotos = new Photo();
                         $entityPhotos->setFilename($newFileName);
-                        $entityPhotos->setRecipeId($recipeId);
                         $entityPhotos->setIsPublic($form->get('is_public')->getData());
                         $entityPhotos->setUploadedAt(new \DateTime());
                         $entityPhotos->setUser($this->getUser());
                         $em->persist($entityPhotos);
-
                         $em->flush();
+
+                        $entityRecipe = new Recipe();
+                        $entityRecipe->setDescription($recipe);
+                        $entityRecipe->setUploadedAt(new \DateTime());
+                        $entityRecipe->setPhotoId($entityPhotos);
+                        $em->persist($entityRecipe);
+                        $em->flush();
+                        // Double flush isn't a good practice
+
                         $this->addFlash('success','Recipe uploaded!');
                     }
                     catch(\Exception $e){

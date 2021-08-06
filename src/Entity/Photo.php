@@ -28,7 +28,6 @@ class Photo
      */
     private $user;
 
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -38,6 +37,12 @@ class Photo
      * @ORM\Column(type="boolean")
      */
     private $is_public;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Recipe::class, mappedBy="photo_id", cascade={"persist", "remove"})
+     */
+    private $recipe;
+
 
 
     public function getId(): ?int
@@ -91,6 +96,23 @@ class Photo
     public function setUploadedAt(\DateTimeInterface $uploaded_at): self
     {
         $this->uploaded_at = $uploaded_at;
+
+        return $this;
+    }
+
+    public function getRecipe(): ?Recipe
+    {
+        return $this->recipe;
+    }
+
+    public function setRecipe(string $recipe): self
+    {
+        // set the owning side of the relation if necessary
+//        if ($recipe->getPhotoId() !== $this) {
+//            $recipe->setPhotoId($this);
+//        }
+
+        $this->recipe = $recipe;
 
         return $this;
     }
